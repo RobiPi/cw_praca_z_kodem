@@ -27,7 +27,7 @@ jobs:
         python-version: '3.x'
 
     - name: Instalacja zależności
-      run: pip install -r requirements.txti
+      run: pip install -r requirements.txt
 
     - name: Wykonanie testów
       run: pylint app.py
