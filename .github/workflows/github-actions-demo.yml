@@ -14,3 +14,20 @@ jobs:
 
     - name: Sprawdzenie wersji Pythona
       run: python --version
+  pylint:
+    runs-on: ubuntu-latest 
+
+    steps:
+    - name: Pobranie kodu źródłowego
+      uses: actions/checkout@v2
+
+    - name: Ustawienie Pythona
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Instalacja zależności
+      run: pip install -r requirements.txti
+
+    - name: Wykonanie testów
+      run: pylint app.py
