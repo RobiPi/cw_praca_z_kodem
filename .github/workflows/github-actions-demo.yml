@@ -1,0 +1,16 @@
+name: Sprawdzanie wersji Pythona
+
+on: [push, pull_request] 
+
+jobs:
+  check-python-version:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Ustawienie Pythona
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Sprawdzenie wersji Pythona
+      run: python --version
