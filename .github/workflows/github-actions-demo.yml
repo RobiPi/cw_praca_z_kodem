@@ -1,0 +1,36 @@
+name: Sprawdzanie wersji Pythona
+
+on: [push, pull_request] 
+
+jobs:
+  check-python-version:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Ustawienie Pythona
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Sprawdzenie wersji Pythona
+      run: python --version
+  pylint:
+    runs-on: ubuntu-latest 
+
+    steps:
+    - name: Pobranie kodu źródłowego
+      uses: actions/checkout@v2
+
+    - name: Ustawienie Pythona
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+        
+    - name: Instalacja narzędzi Pylint
+      run: pip install pylint  
+
+    - name: Instalacja zależności
+      run: pip install -r requirements.txt
+
+    - name: Wykonanie testów
+      run: pylint app.py
